@@ -1,18 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Posts from './components/posts'
-import viteLogo from '/vite.svg'
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { CommentList } from "./components/CommentList";
+import Posts from "./components/posts";
+import { Users } from "./components/users";
 
 function App() {
-const name: string = 'Telleca Developer'
-const [count, setCount] = useState(0)
-
   return (
     <div className="w-full max-w-[1344px] mx-auto h-screen">
+      {/* <Router>
+        <Routes>
+          <Route path="/posts/:postId" element={<CommentList />} />
+        </Routes>
+      </Router> */}
       <Posts />
+      <Users />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

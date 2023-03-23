@@ -1,5 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {
+  useNavigate,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { UseFetch } from "../hooks/useFetch";
+import { CommentList } from "./CommentList";
 import Post from "./post";
 
 interface PostsType {
@@ -9,46 +17,28 @@ interface PostsType {
   userId: number;
 }
 
-interface CommentProp {
-    body: string,
-    email: string,
-    id: number,
-    name: string,
-    postId: number
-}
-
 export default function Posts() {
-  const [data, setData] = useState<PostsType[]>([]);
-  const [comments, setComments] = useState<CommentProp[]>([]);
+  const navigate = useNavigate();
+  const { data: PostItem } = UseFetch<PostsType[]>(
+    "https://jsonplaceholder.typicode.com/posts?_limit=10"
+  );
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts?_limit=10")
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-
-        const postId = response.data[0].id;
-        axios
-          .get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-          .then((response) => {
-            setComments(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const handlePostClick = (postId: number) => {
+    navigate(`/posts/${postId}`);
+  };
 
   return (
     <div className="grid grid-cols-3 gap-4 place-items-start">
-      {data.map((item) => {
-        return <Post title={item.title} body={item.body} />;
+      {PostItem?.map((post) => {
+        return (
+          <div key={post.id} onClick={() => handlePostClick(post.id)}>
+            <Post title={post.title} body={post.body} />
+          </div>
+        );
       })}
+      <Routes>
+        <Route path="/posts/:postId" element={<CommentList />} />
+      </Routes>
     </div>
   );
 }

@@ -7,9 +7,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { UseFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import { CommentList } from "./CommentList";
 import Post from "./post";
+import { LoadingSpinner } from "../utils/Loading";
 
 interface PostsType {
   body: string;
@@ -20,7 +21,8 @@ interface PostsType {
 
 export default function Posts() {
   const navigate = useNavigate();
-  const { data: PostItem } = UseFetch<PostsType[]>(
+  
+  const { data: PostItem, isLoading } = useFetch<PostsType[]>(
     "https://jsonplaceholder.typicode.com/posts"
   );
 
@@ -28,8 +30,12 @@ export default function Posts() {
     navigate(`/posts/${postId}`);
   };
 
+  if (isLoading) {
+    <LoadingSpinner text="Carregando seus posts..." />
+  }
+
   return (
-    <div className="grid grid-cols-3 gap-4 place-items-start max-lg:grid-cols-2 max-sm:grid-cols-1 max-w-[1230px]">
+    <div className="grid grid-cols-3 gap-4 place-items-start max-lg:grid-cols-2 max-sm:grid-cols-1 max-w-[1230px] w-full mr-6">
       {PostItem?.map((post) => {
         return (
           <div key={post.id} onClick={() => handlePostClick(post.id)}>

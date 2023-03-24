@@ -1,11 +1,10 @@
 import React from "react";
 
-export function LoadingSpinner() {
-  const loadingText: string = "Carregando os dados do usuario..";
+export function LoadingSpinner({...props}) {
   return (
     <div className="base-loading">  
       <div className="spinner"></div>
-      <span className="spinner-text">{loadingText}</span>
+      <span className="spinner-text">{props.text}</span>
     </div>
   );
 }

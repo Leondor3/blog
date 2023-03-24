@@ -18,11 +18,11 @@ export default function Post({ ...props }) {
         ease: "easeOut",
       }}
     >
-      <div className="shadow-lg ring-1 h-72 rounded-lg p-4 cursor-pointer">
-        <h1 className="text-3xl font-bold mb-2 leading-tight tracking-tight">
+      <div className="shadow-2xl h-72 rounded-lg p-4 cursor-pointer ">
+        <h1 className="text-2xl font-bold mb-2 leading-tight tracking-tight">
           {props.title}
         </h1>
-        <p className="text-1xl leading-tight">{props.body}</p>
+        <p className="text-1xl leading-tight text-slate-400">{props.body}</p>
       </div>
     </motion.div>
   );

@@ -5,7 +5,11 @@ module.exports = {
     './index.html'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'inter': ['Inter', 'Arial', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

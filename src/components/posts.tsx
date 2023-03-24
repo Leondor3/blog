@@ -35,7 +35,7 @@ export default function Posts() {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4 place-items-start max-lg:grid-cols-2 max-sm:grid-cols-1 max-w-[1230px] w-full mr-6">
+    <div className="grid grid-cols-3 gap-4 place-items-start max-lg:grid-cols-2 max-sm:grid-cols-1 max-w-[1230px] w-full mr-6 max-lg:max-w-[700px] max-2xl:max-w-[950px] mx-8">
       {PostItem?.map((post) => {
         return (
           <div key={post.id} onClick={() => handlePostClick(post.id)}>

@@ -15,14 +15,14 @@ export function User({ name, isActive }: UserProps) {
     if (isActive) {
       setIsActiveClass("text-blue-600");
     } else {
-      setIsActiveClass("");
+      setIsActiveClass("text-slate-400");
     }
   }, [isActive]);
 
   console.log("isActive:", isActive);
   return (
     <button className="">
-      <span className={`hover:text-blue-600 ${isActiveClass} text-zinc-900`}>
+      <span className={`hover:text-blue-600 ${isActiveClass} text-left items-start flex mr-4`}>
         {name}
       </span>
     </button>

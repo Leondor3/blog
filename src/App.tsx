@@ -7,7 +7,7 @@ import { Users } from "./components/users";
 
 function App() {
   return (
-    <div className="w-full max-w-[1344px] mx-auto h-screen">
+    <div className="w-full max-w-[1344px] mx-auto h-screen flex justify-between">
       <Router>
         <Routes>
           <Route path="/" element={<Posts />} />

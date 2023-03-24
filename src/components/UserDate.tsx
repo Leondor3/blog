@@ -49,7 +49,7 @@ export function UserDate() {
 
   return (
     <div className="flex flex-col items-start justify-start">
-      <button className="bg-transparent mt-2" onClick={() => navigate("/")}>
+      <button className="bg-transparent mt-2 ml-2" onClick={() => navigate("/")}>
         <svg
           width="32"
           height="32"
@@ -69,7 +69,7 @@ export function UserDate() {
       {!userDate ? (
         <LoadingSpinner text="Carregando os dados do usuário..." />
       ) : (
-        <React.Fragment>
+        <div className="ml-4">
           <h1 className="text-2xl font-bold py-2">Dados do Usuario:</h1>
           <h2 className="font-bold">
             Nome: <span className="font-normal">{userDate.name}</span>
@@ -118,7 +118,7 @@ export function UserDate() {
             Company Bs:{" "}
             <span className="font-normal">{userDate.company.bs}</span>
           </h2>
-        </React.Fragment>
+        </div>
       )}
     </div>
   );

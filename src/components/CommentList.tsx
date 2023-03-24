@@ -27,7 +27,7 @@ export function CommentList() {
 
   return (
     <div>
-      <button className="bg-transparent mt-2" onClick={() => navigate("/")}>
+      <button className="bg-transparent mt-2 ml-2" onClick={() => navigate("/")}>
         <svg
           width="32"
           height="32"
@@ -46,7 +46,7 @@ export function CommentList() {
       {comments.map((comment) => {
         return (
           <div key={comment.id}>
-            <div className="flex  flex-col mb-16 shadow-sm">
+            <div className="flex ml-4 flex-col mb-16 shadow-sm">
               <h3>Name: {comment.name}</h3>
               <h3>Email: {comment.email}</h3>
               <h3>Body: {comment.body}</h3>

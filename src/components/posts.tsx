@@ -28,7 +28,7 @@ export default function Posts() {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4 place-items-start">
+    <div className="grid grid-cols-3 gap-4 place-items-start max-lg:grid-cols-2 max-sm:grid-cols-1 max-w-[1230px]">
       {PostItem?.map((post) => {
         return (
           <div key={post.id} onClick={() => handlePostClick(post.id)}>
@@ -36,9 +36,6 @@ export default function Posts() {
           </div>
         );
       })}
-      <Routes>
-        <Route path="/posts/:postId" element={<CommentList />} />
-      </Routes>
     </div>
   );
 }

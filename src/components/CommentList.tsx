@@ -45,7 +45,6 @@ export function CommentList() {
       {comments.map((comment) => {
         return (
           <div key={comment.id}>
-            <h2>Comentário do post {postId}</h2>
             <h3>{comment.name}</h3>
           </div>
         );

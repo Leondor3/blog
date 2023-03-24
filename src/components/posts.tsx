@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   useNavigate,
   BrowserRouter as Router,
@@ -20,7 +21,7 @@ interface PostsType {
 export default function Posts() {
   const navigate = useNavigate();
   const { data: PostItem } = UseFetch<PostsType[]>(
-    "https://jsonplaceholder.typicode.com/posts?_limit=10"
+    "https://jsonplaceholder.typicode.com/posts"
   );
 
   const handlePostClick = (postId: number) => {

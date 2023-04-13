@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'inter': ['Inter', 'Arial', 'sans-serif'],
+        'Lato': ['Lato', 'Arial', 'sans-serif'],
       },
     },
   },

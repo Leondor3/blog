@@ -4,6 +4,7 @@ import { CommentList } from "./components/CommentList";
 import Posts from "./components/posts";
 import Banner from "./pages/banner";
 import Navigation from "./pages/navigation";
+import Contact from "./pages/contact";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Posts />} />
           <Route path="/posts/:postId" element={<CommentList />} />
         </Routes>
+        <Contact />
       </Router>
     </div>
   );

@@ -3,16 +3,18 @@ import React, { useState, useEffect } from "react";
 const ChoiceMovie = () => {
   const [chosenFilm, setChosenFilme] = useState(null);
   const [chosenFilmName, setChosenFilmName] = useState(null);
+
+  const [chosenWeek, setChosenWeek] = useState(null);
+  const [chosenWeekName, setChosenWeekName] = useState(null);
   const handleChosenMovie = (id, title) => {
     setChosenFilme(id);
     setChosenFilmName(title);
   };
 
-  useEffect(() => {
-    if (chosenFilmName) {
-      alert(`O filme escolhido foi: ${chosenFilmName}`);
-    }
-  }, [chosenFilmName]);
+  const handleChosenWeek = (id, day) => {
+    setChosenWeekName(day);
+    setChosenWeek(id);
+  };
 
   const movies = [
     {
@@ -41,6 +43,16 @@ const ChoiceMovie = () => {
     },
   ];
 
+  const daysOfWeek = [
+    { id: 1, name: "Domingo" },
+    { id: 2, name: "Segunda-feira" },
+    { id: 3, name: "Terça-feira" },
+    { id: 4, name: "Quarta-feira" },
+    { id: 5, name: "Quinta-feira" },
+    { id: 6, name: "Sexta-feira" },
+    { id: 7, name: "Sábado" },
+  ];
+
   return (
     <div className="bg-black/90 h-screen w-full absolute z-20 flex items-center justify-center flex-col">
       <div className="absolute top-40 text-center">
@@ -53,12 +65,13 @@ const ChoiceMovie = () => {
         {movies.map((movie) => {
           return (
             <a
+            className="flex items-center justify-center"
               key={movie.id}
               onClick={() => handleChosenMovie(movie.id, movie.title)}
             >
               {chosenFilm === null || chosenFilm === movie.id ? (
                 <img
-                  className="bg-cover block w-60 h-full"
+                  className="bg-cover block w-60 nax-w-60 h-full"
                   src={movie.coverUrl}
                   alt={movie.title}
                   title={movie.title}
@@ -67,6 +80,32 @@ const ChoiceMovie = () => {
             </a>
           );
         })}
+        {chosenFilmName && (
+          <div className="text-white text-xl mt-4 space-y-4">
+            Você escolheu o filme:{" "}
+            <span className="text-green-500">{chosenFilmName}</span>
+            <br />
+            <span>
+              Escolha agora o dia da semana:{" "}
+              <span className="text-green-500">{chosenWeekName ? chosenWeekName : null}</span>
+            </span>
+            <ul>
+              {daysOfWeek.map((day) => {
+                return (
+                  <li
+                    onClick={() => handleChosenWeek(day.id, day.name)}
+                    className="hover:text-slate-400 cursor-pointer"
+                  >
+                    {day.name}
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="text-sm mt-2 hover:text-slate-400">
+              Agora vá no privado do @Leandro e diga sua resposta
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
